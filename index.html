@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Vishal Andhale - Aspiring Software Developer & Front-End Enthusiast. B.Tech CSE student at G H Raisoni International Skill Tech University." />
+  <meta name="keywords" content="Vishal Andhale, portfolio, software developer, front-end, CSE, web developer" />
+  <meta name="author" content="Vishal Andhale" />
+  <title>Vishal Andhale | Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress" class="scroll-progress"></div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursor-trail"></div>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <span class="logo-bracket">&lt;</span>VA<span class="logo-bracket">/&gt;</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-primary-sm">Hire Me</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section id="home" class="hero">
+    <canvas id="particles-canvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span>Available for Opportunities</span>
+      </div>
+      <p class="hero-greeting">Hello, World! I'm</p>
+      <h1 class="hero-name">
+        <span class="name-word" data-text="Vishal">Vishal</span>
+        <span class="name-word accent" data-text="Andhale">Andhale</span>
+      </h1>
+      <div class="hero-tagline">
+        <span class="typewriter" id="typewriter"></span><span class="cursor-blink">|</span>
+      </div>
+      <p class="hero-description">
+        Crafting beautiful, functional, and scalable digital experiences. Passionate about turning ideas into reality through code.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">
+          <i class="fas fa-rocket"></i> View Projects
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <i class="fas fa-paper-plane"></i> Contact Me
+        </a>
+      </div>
+      <div class="hero-scroll-hint">
+        <span>Scroll to explore</span>
+        <div class="scroll-mouse">
+          <div class="scroll-wheel"></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card glass-card">
+        <div class="hero-card-header">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        </div>
+        <div class="code-block">
+          <div class="code-line"><span class="kw">const</span> <span class="var">developer</span> = {</div>
+          <div class="code-line pl">  <span class="prop">name</span>: <span class="str">"Vishal Andhale"</span>,</div>
+          <div class="code-line pl">  <span class="prop">role</span>: <span class="str">"Front-End Dev"</span>,</div>
+          <div class="code-line pl">  <span class="prop">skills</span>: [<span class="str">"HTML"</span>, <span class="str">"JS"</span>, <span class="str">"C++"</span>],</div>
+          <div class="code-line pl">  <span class="prop">passion</span>: <span class="str">"Building Dreams"</span>,</div>
+          <div class="code-line pl">  <span class="prop">available</span>: <span class="bool">true</span></div>
+          <div class="code-line">};</div>
+          <div class="code-line mt"><span class="fn">console</span>.<span class="meth">log</span>(<span class="var">developer</span>.<span class="prop">passion</span>);</div>
+          <div class="code-output">// "Building Dreams" ✨</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" class="about section">
+    <div class="container">
+      <div class="section-header" data-aos>
+        <span class="section-tag">Get To Know Me</span>
+        <h2 class="section-title">About <span class="accent">Me</span></h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="about-content">
+        <div class="about-visual" data-aos>
+          <div class="about-img-wrapper">
+            <div class="about-hexagon">
+              <div class="hex-inner">
+                <i class="fas fa-code hex-icon"></i>
+              </div>
+            </div>
+            <div class="about-stats-float">
+              <div class="stat-card glass-card">
+                <span class="stat-num">2+</span>
+                <span class="stat-label">Years Coding</span>
+              </div>
+              <div class="stat-card glass-card">
+                <span class="stat-num">10+</span>
+                <span class="stat-label">Projects Built</span>
+              </div>
+              <div class="stat-card glass-card">
+                <span class="stat-num">∞</span>
+                <span class="stat-label">Passion</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-text" data-aos>
+          <h3 class="about-subtitle">Aspiring Software Developer with a Passion for Innovation</h3>
+          <p>
+            I'm <strong>Vishal Andhale</strong>, a B.Tech Computer Science Engineering student at 
+            <span class="highlight">G H Raisoni International Skill Tech University</span>, graduating in 2028. 
+            I'm deeply passionate about crafting intuitive, high-performance web applications.
+          </p>
+          <p>
+            My journey in tech is driven by curiosity and a love for tackling complex problems. 
+            From building responsive frontends to exploring algorithms in C++, I thrive on 
+            learning new technologies and turning creative concepts into functional realities.
+          </p>
+          <p>
+            When I'm not coding, you'll find me exploring the latest in tech, contributing to open-source projects, 
+            or collaborating with peers to build something meaningful.
+          </p>
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>India</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-graduation-cap"></i>
+              <span>B.Tech CSE, 2028</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-laptop-code"></i>
+              <span>Front-End Enthusiast</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-brain"></i>
+              <span>Problem Solver</span>
+            </div>
+          </div>
+          <div class="about-cta">
+            <a href="#contact" class="btn btn-primary">Let's Connect</a>
+            <a href="#" class="btn btn-outline" id="download-cv">
+              <i class="fas fa-download"></i> Download CV
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SKILLS ===================== -->
+  <section id="skills" class="skills section">
+    <div class="container">
+      <div class="section-header" data-aos>
+        <span class="section-tag">What I Know</span>
+        <h2 class="section-title">My <span class="accent">Skills</span></h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="skills-grid">
+        <!-- Technical Skills -->
+        <div class="skills-category" data-aos>
+          <div class="category-header">
+            <div class="category-icon"><i class="fas fa-code"></i></div>
+            <h3>Technical Skills</h3>
+          </div>
+          <div class="tech-skills">
+            <div class="tech-skill-card glass-card" style="--delay:0.1s">
+              <div class="skill-icon-wrap html">
+                <i class="fab fa-html5"></i>
+              </div>
+              <div class="skill-info">
+                <div class="skill-name-row">
+                  <span class="skill-name">HTML5</span>
+                  <span class="skill-pct">90%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-fill" data-width="90" style="--color: #e34f26"></div>
+                </div>
+              </div>
+            </div>
+            <div class="tech-skill-card glass-card" style="--delay:0.2s">
+              <div class="skill-icon-wrap cpp">
+                <i class="fas fa-terminal"></i>
+              </div>
+              <div class="skill-info">
+                <div class="skill-name-row">
+                  <span class="skill-name">C++</span>
+                  <span class="skill-pct">75%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-fill" data-width="75" style="--color: #659ad2"></div>
+                </div>
+              </div>
+            </div>
+            <div class="tech-skill-card glass-card" style="--delay:0.3s">
+              <div class="skill-icon-wrap js">
+                <i class="fab fa-js-square"></i>
+              </div>
+              <div class="skill-info">
+                <div class="skill-name-row">
+                  <span class="skill-name">JavaScript</span>
+                  <span class="skill-pct">80%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-fill" data-width="80" style="--color: #f7df1e"></div>
+                </div>
+              </div>
+            </div>
+            <div class="tech-skill-card glass-card" style="--delay:0.4s">
+              <div class="skill-icon-wrap fe">
+                <i class="fas fa-layer-group"></i>
+              </div>
+              <div class="skill-info">
+                <div class="skill-name-row">
+                  <span class="skill-name">Front-End Dev</span>
+                  <span class="skill-pct">82%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-fill" data-width="82" style="--color: #7c3aed"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Soft Skills -->
+        <div class="skills-category" data-aos>
+          <div class="category-header">
+            <div class="category-icon"><i class="fas fa-users"></i></div>
+            <h3>Soft Skills</h3>
+          </div>
+          <div class="soft-skills">
+            <div class="soft-skill-card glass-card" style="--delay:0.1s">
+              <div class="soft-icon"><i class="fas fa-comments"></i></div>
+              <span>Communication</span>
+            </div>
+            <div class="soft-skill-card glass-card" style="--delay:0.2s">
+              <div class="soft-icon"><i class="fas fa-handshake"></i></div>
+              <span>Teamwork</span>
+            </div>
+            <div class="soft-skill-card glass-card" style="--delay:0.3s">
+              <div class="soft-icon"><i class="fas fa-puzzle-piece"></i></div>
+              <span>Problem Solving</span>
+            </div>
+            <div class="soft-skill-card glass-card" style="--delay:0.4s">
+              <div class="soft-icon"><i class="fas fa-clock"></i></div>
+              <span>Time Management</span>
+            </div>
+            <div class="soft-skill-card glass-card" style="--delay:0.5s">
+              <div class="soft-icon"><i class="fas fa-sync-alt"></i></div>
+              <span>Adaptability</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROJECTS ===================== -->
+  <section id="projects" class="projects section">
+    <div class="container">
+      <div class="section-header" data-aos>
+        <span class="section-tag">What I've Built</span>
+        <h2 class="section-title">My <span class="accent">Projects</span></h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="projects-grid">
+
+        <div class="project-card glass-card" data-aos style="--delay:0.1s">
+          <div class="project-card-header">
+            <div class="project-icon"><i class="fas fa-globe"></i></div>
+            <div class="project-links">
+              <a href="#" class="project-link" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="#" class="project-link" title="Live Demo" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <h3 class="project-title">E-Commerce Platform</h3>
+          <p class="project-desc">A fully responsive e-commerce web application featuring product listing, cart functionality, and a clean checkout flow. Built with modern web technologies.</p>
+          <div class="project-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
+          <div class="project-footer">
+            <a href="#" class="btn btn-sm btn-ghost"><i class="fab fa-github"></i> GitHub</a>
+            <a href="#" class="btn btn-sm btn-primary">Live Demo <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="project-card glass-card featured" data-aos style="--delay:0.2s">
+          <div class="featured-badge">⭐ Featured</div>
+          <div class="project-card-header">
+            <div class="project-icon"><i class="fas fa-brain"></i></div>
+            <div class="project-links">
+              <a href="#" class="project-link" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="#" class="project-link" title="Live Demo" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <h3 class="project-title">AI Quiz Generator</h3>
+          <p class="project-desc">An intelligent quiz generation app that creates custom questions on any topic. Features score tracking, timer, and animated result screens.</p>
+          <div class="project-tags">
+            <span class="tag">JavaScript</span>
+            <span class="tag">API</span>
+            <span class="tag">CSS3</span>
+          </div>
+          <div class="project-footer">
+            <a href="#" class="btn btn-sm btn-ghost"><i class="fab fa-github"></i> GitHub</a>
+            <a href="#" class="btn btn-sm btn-primary">Live Demo <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="project-card glass-card" data-aos style="--delay:0.3s">
+          <div class="project-card-header">
+            <div class="project-icon"><i class="fas fa-tasks"></i></div>
+            <div class="project-links">
+              <a href="#" class="project-link" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="#" class="project-link" title="Live Demo" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <h3 class="project-title">Task Manager App</h3>
+          <p class="project-desc">A productivity app with drag-and-drop task management, priority labels, deadline reminders, and local storage persistence.</p>
+          <div class="project-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">LocalStorage</span>
+          </div>
+          <div class="project-footer">
+            <a href="#" class="btn btn-sm btn-ghost"><i class="fab fa-github"></i> GitHub</a>
+            <a href="#" class="btn btn-sm btn-primary">Live Demo <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="project-card glass-card" data-aos style="--delay:0.4s">
+          <div class="project-card-header">
+            <div class="project-icon"><i class="fas fa-cloud-sun"></i></div>
+            <div class="project-links">
+              <a href="#" class="project-link" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="#" class="project-link" title="Live Demo" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <h3 class="project-title">Weather Dashboard</h3>
+          <p class="project-desc">Real-time weather app fetching live data via OpenWeather API. Displays temperature, humidity, wind speed with animated weather icons.</p>
+          <div class="project-tags">
+            <span class="tag">JavaScript</span>
+            <span class="tag">REST API</span>
+            <span class="tag">CSS3</span>
+          </div>
+          <div class="project-footer">
+            <a href="#" class="btn btn-sm btn-ghost"><i class="fab fa-github"></i> GitHub</a>
+            <a href="#" class="btn btn-sm btn-primary">Live Demo <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="project-card glass-card" data-aos style="--delay:0.5s">
+          <div class="project-card-header">
+            <div class="project-icon"><i class="fas fa-calculator"></i></div>
+            <div class="project-links">
+              <a href="#" class="project-link" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="#" class="project-link" title="Live Demo" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <h3 class="project-title">DSA Visualizer</h3>
+          <p class="project-desc">Interactive visualization of sorting and searching algorithms like Bubble Sort, Binary Search. Great for learning and teaching DSA concepts.</p>
+          <div class="project-tags">
+            <span class="tag">C++</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Canvas</span>
+          </div>
+          <div class="project-footer">
+            <a href="#" class="btn btn-sm btn-ghost"><i class="fab fa-github"></i> GitHub</a>
+            <a href="#" class="btn btn-sm btn-primary">Live Demo <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="project-card glass-card" data-aos style="--delay:0.6s">
+          <div class="project-card-header">
+            <div class="project-icon"><i class="fas fa-palette"></i></div>
+            <div class="project-links">
+              <a href="#" class="project-link" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="#" class="project-link" title="Live Demo" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <h3 class="project-title">Portfolio Website</h3>
+          <p class="project-desc">This very portfolio — a dark-themed, glassmorphism design with animated particles, scroll effects, and responsive layout.</p>
+          <div class="project-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">JavaScript</span>
+          </div>
+          <div class="project-footer">
+            <a href="#" class="btn btn-sm btn-ghost"><i class="fab fa-github"></i> GitHub</a>
+            <a href="#" class="btn btn-sm btn-primary">Live Demo <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EDUCATION ===================== -->
+  <section id="education" class="education section">
+    <div class="container">
+      <div class="section-header" data-aos>
+        <span class="section-tag">Academic Journey</span>
+        <h2 class="section-title">My <span class="accent">Education</span></h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="education-timeline">
+        <div class="timeline-item" data-aos>
+          <div class="timeline-dot">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <div class="timeline-connector"></div>
+          <div class="timeline-card glass-card">
+            <div class="timeline-badge current">Current</div>
+            <div class="timeline-header">
+              <div class="edu-icon"><i class="fas fa-university"></i></div>
+              <div>
+                <h3 class="edu-degree">B.Tech in Computer Science Engineering</h3>
+                <p class="edu-institution">G H Raisoni International Skill Tech University</p>
+              </div>
+            </div>
+            <div class="timeline-meta">
+              <span class="meta-item"><i class="fas fa-calendar"></i> 2024 – 2028</span>
+              <span class="meta-item"><i class="fas fa-map-marker-alt"></i> India</span>
+              <span class="meta-item"><i class="fas fa-star"></i> CGPA: 8.5+</span>
+            </div>
+            <div class="edu-description">
+              <p>Pursuing a comprehensive Computer Science Engineering degree with focus areas in Data Structures, Algorithms, Web Development, and Software Engineering principles.</p>
+            </div>
+            <div class="edu-tags">
+              <span class="tag">DSA</span>
+              <span class="tag">Web Dev</span>
+              <span class="tag">OOP</span>
+              <span class="tag">DBMS</span>
+              <span class="tag">OS</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos>
+          <div class="timeline-dot completed">
+            <i class="fas fa-school"></i>
+          </div>
+          <div class="timeline-card glass-card">
+            <div class="timeline-badge completed-badge">Completed</div>
+            <div class="timeline-header">
+              <div class="edu-icon"><i class="fas fa-school"></i></div>
+              <div>
+                <h3 class="edu-degree">Higher Secondary (12th Grade)</h3>
+                <p class="edu-institution">Maharashtra State Board</p>
+              </div>
+            </div>
+            <div class="timeline-meta">
+              <span class="meta-item"><i class="fas fa-calendar"></i> 2022 – 2024</span>
+              <span class="meta-item"><i class="fas fa-book"></i> Science Stream</span>
+            </div>
+            <div class="edu-description">
+              <p>Completed higher secondary education with a focus on Science (Physics, Chemistry, Mathematics & Computer Science).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SOCIALS ===================== -->
+  <section id="socials" class="socials section">
+    <div class="container">
+      <div class="section-header" data-aos>
+        <span class="section-tag">Stay Connected</span>
+        <h2 class="section-title">Find Me <span class="accent">Online</span></h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="socials-grid">
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-card glass-card linkedin" data-aos style="--delay:0.1s" aria-label="LinkedIn">
+          <div class="social-icon-wrap"><i class="fab fa-linkedin-in"></i></div>
+          <div class="social-info">
+            <span class="social-name">LinkedIn</span>
+            <span class="social-handle">@vishalandhale</span>
+          </div>
+          <div class="social-arrow"><i class="fas fa-arrow-up-right-from-square"></i></div>
+        </a>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-card glass-card github-card" data-aos style="--delay:0.2s" aria-label="GitHub">
+          <div class="social-icon-wrap"><i class="fab fa-github"></i></div>
+          <div class="social-info">
+            <span class="social-name">GitHub</span>
+            <span class="social-handle">@vishalandhale</span>
+          </div>
+          <div class="social-arrow"><i class="fas fa-arrow-up-right-from-square"></i></div>
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-card glass-card instagram-card" data-aos style="--delay:0.3s" aria-label="Instagram">
+          <div class="social-icon-wrap"><i class="fab fa-instagram"></i></div>
+          <div class="social-info">
+            <span class="social-name">Instagram</span>
+            <span class="social-handle">@vishal_andhale</span>
+          </div>
+          <div class="social-arrow"><i class="fas fa-arrow-up-right-from-square"></i></div>
+        </a>
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-card glass-card twitter-card" data-aos style="--delay:0.4s" aria-label="Twitter/X">
+          <div class="social-icon-wrap"><i class="fab fa-x-twitter"></i></div>
+          <div class="social-info">
+            <span class="social-name">Twitter / X</span>
+            <span class="social-handle">@vishalandhale</span>
+          </div>
+          <div class="social-arrow"><i class="fas fa-arrow-up-right-from-square"></i></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact" class="contact section">
+    <div class="container">
+      <div class="section-header" data-aos>
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title">Contact <span class="accent">Me</span></h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="contact-content">
+        <div class="contact-info" data-aos>
+          <h3>Let's Build Something <span class="accent">Amazing</span></h3>
+          <p>Have a project in mind? Want to collaborate? Or just want to say hi? My inbox is always open. I'll do my best to get back to you!</p>
+          <div class="contact-details">
+            <div class="contact-detail-item">
+              <div class="detail-icon"><i class="fas fa-envelope"></i></div>
+              <div>
+                <span class="detail-label">Email</span>
+                <span class="detail-value">vishal.andhale@email.com</span>
+              </div>
+            </div>
+            <div class="contact-detail-item">
+              <div class="detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div>
+                <span class="detail-label">Location</span>
+                <span class="detail-value">India 🇮🇳</span>
+              </div>
+            </div>
+            <div class="contact-detail-item">
+              <div class="detail-icon"><i class="fas fa-clock"></i></div>
+              <div>
+                <span class="detail-label">Response Time</span>
+                <span class="detail-value">Within 24 hours</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form-wrap" data-aos>
+          <form class="contact-form glass-card" id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <div class="input-wrapper">
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" id="name" name="name" placeholder="John Doe" required autocomplete="name" />
+                <div class="input-border"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <div class="input-wrapper">
+                <i class="fas fa-envelope input-icon"></i>
+                <input type="email" id="email" name="email" placeholder="john@example.com" required autocomplete="email" />
+                <div class="input-border"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <div class="input-wrapper">
+                <i class="fas fa-tag input-icon"></i>
+                <input type="text" id="subject" name="subject" placeholder="Project Collaboration" autocomplete="off" />
+                <div class="input-border"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <div class="input-wrapper textarea-wrapper">
+                <i class="fas fa-comment-alt input-icon textarea-icon"></i>
+                <textarea id="message" name="message" placeholder="Tell me about your project or just say hello..." rows="5" required></textarea>
+                <div class="input-border"></div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full" id="submit-btn">
+              <span class="btn-text"><i class="fas fa-paper-plane"></i> Send Message</span>
+              <span class="btn-loading hidden"><i class="fas fa-spinner fa-spin"></i> Sending...</span>
+            </button>
+            <div class="form-success hidden" id="form-success">
+              <i class="fas fa-check-circle"></i>
+              <span>Message sent successfully! I'll get back to you soon.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="#home" class="nav-logo footer-logo">
+              <span class="logo-bracket">&lt;</span>VA<span class="logo-bracket">/&gt;</span>
+            </a>
+            <p>Aspiring Software Developer crafting beautiful digital experiences. Always learning, always building.</p>
+            <div class="footer-socials">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            </div>
+          </div>
+          <div class="footer-links-col">
+            <h4>Navigation</h4>
+            <ul>
+              <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+              <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
+              <li><a href="#skills"><i class="fas fa-chevron-right"></i> Skills</a></li>
+              <li><a href="#projects"><i class="fas fa-chevron-right"></i> Projects</a></li>
+            </ul>
+          </div>
+          <div class="footer-links-col">
+            <h4>More</h4>
+            <ul>
+              <li><a href="#education"><i class="fas fa-chevron-right"></i> Education</a></li>
+              <li><a href="#socials"><i class="fas fa-chevron-right"></i> Socials</a></li>
+              <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="copyright">© 2026 <span class="accent">Vishal Andhale</span>. All Rights Reserved.</p>
+        <p class="footer-tagline">Designed with <span class="heart">❤️</span> passion</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
