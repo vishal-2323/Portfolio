@@ -289,143 +289,225 @@ const skillObserver = new IntersectionObserver((entries) => {
 skillFills.forEach(fill => skillObserver.observe(fill));
 
 // ─── CONTACT FORM ───────────────────────────
-const contactForm = document.getElementById('contact-form');
-const submitBtn = document.getElementById('submit-btn');
-const formSuccess = document.getElementById('form-success');
+const contactForm   = document.getElementById('contact-form');
+const submitBtn     = document.getElementById('submit-btn');
+const formSuccess   = document.getElementById('form-success');
+const charCounter   = document.getElementById('char-counter');
+const messageArea   = document.getElementById('message');
+const CHAR_LIMIT    = 500;
 
+// ── Character counter ──
+if (messageArea && charCounter) {
+  messageArea.addEventListener('input', () => {
+    const len = messageArea.value.length;
+    charCounter.textContent = `${len} / ${CHAR_LIMIT}`;
+    charCounter.classList.toggle('near-limit', len >= CHAR_LIMIT * 0.8 && len < CHAR_LIMIT);
+    charCounter.classList.toggle('at-limit',   len >= CHAR_LIMIT);
+  });
+}
+
+// ── Helpers ──
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function setFieldError(fieldId, msg) {
+  const field = document.getElementById(fieldId);
+  const error = document.getElementById(`${fieldId}-error`);
+  if (!field) return;
+  field.classList.toggle('input-error', !!msg);
+  if (error) error.textContent = msg || '';
+}
+
+function clearFieldError(fieldId) {
+  setFieldError(fieldId, '');
+}
+
+function validateName() {
+  const val = document.getElementById('name').value.trim();
+  if (!val)          { setFieldError('name', 'Name is required.'); return false; }
+  if (val.length < 2){ setFieldError('name', 'Name must be at least 2 characters.'); return false; }
+  clearFieldError('name'); return true;
+}
+
+function validateEmail() {
+  const val = document.getElementById('email').value.trim();
+  if (!val)              { setFieldError('email', 'Email is required.'); return false; }
+  if (!isValidEmail(val)){ setFieldError('email', 'Please enter a valid email address.'); return false; }
+  clearFieldError('email'); return true;
+}
+
+function validateMessage() {
+  const val = messageArea ? messageArea.value.trim() : '';
+  if (!val)           { setFieldError('message', 'Message cannot be empty.'); return false; }
+  if (val.length < 10){ setFieldError('message', 'Message must be at least 10 characters.'); return false; }
+  clearFieldError('message'); return true;
+}
+
+// ── Real-time clear on input ──
+['name', 'email', 'message'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', () => clearFieldError(id));
+});
+
+// ── Blur validation ──
+const nameEl  = document.getElementById('name');
+const emailEl = document.getElementById('email');
+if (nameEl)  nameEl.addEventListener('blur', validateName);
+if (emailEl) emailEl.addEventListener('blur', validateEmail);
+if (messageArea) messageArea.addEventListener('blur', validateMessage);
+
+// ── Shake animation ──
+const shakeStyle = document.createElement('style');
+shakeStyle.textContent = `
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%       { transform: translateX(-8px); }
+    40%       { transform: translateX(8px); }
+    60%       { transform: translateX(-5px); }
+    80%       { transform: translateX(5px); }
+  }
+`;
+document.head.appendChild(shakeStyle);
+
+function shakeForm() {
+  if (!contactForm) return;
+  contactForm.style.animation = 'shake 0.4s ease';
+  setTimeout(() => { contactForm.style.animation = ''; }, 400);
+}
+
+// ── Submit ──
 if (contactForm) {
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
+    const ok = [validateName(), validateEmail(), validateMessage()];
+    if (ok.includes(false)) { shakeForm(); return; }
 
-    if (!name || !email || !message) {
-      shakeForm();
-      return;
-    }
+    const nameVal    = document.getElementById('name').value.trim();
+    const emailVal   = document.getElementById('email').value.trim();
+    const subjectVal = (document.getElementById('subject')?.value.trim()) || 'Portfolio Contact';
+    const msgVal     = messageArea.value.trim();
 
-    if (!isValidEmail(email)) {
-      highlightField(document.getElementById('email'));
-      return;
-    }
-
-    // Simulate sending
-    const btnText = submitBtn.querySelector('.btn-text');
+    // Show loading state
+    const btnText    = submitBtn.querySelector('.btn-text');
     const btnLoading = submitBtn.querySelector('.btn-loading');
-
     btnText.classList.add('hidden');
     btnLoading.classList.remove('hidden');
     submitBtn.disabled = true;
 
+    // Build mailto link as real-world fallback
+    const mailtoBody = `Hi Vishal,\n\nMy name is ${nameVal}.\n\n${msgVal}\n\nBest,\n${nameVal}\n${emailVal}`;
+    const mailtoLink = `mailto:vishalandhale2323@gmail.com`
+      + `?subject=${encodeURIComponent(subjectVal)}`
+      + `&body=${encodeURIComponent(mailtoBody)}`;
+
     setTimeout(() => {
+      window.location.href = mailtoLink;   // opens mail client
       btnText.classList.remove('hidden');
       btnLoading.classList.add('hidden');
       submitBtn.disabled = false;
       formSuccess.classList.remove('hidden');
       contactForm.reset();
-
-      setTimeout(() => {
-        formSuccess.classList.add('hidden');
-      }, 5000);
-    }, 1800);
+      if (charCounter) { charCounter.textContent = `0 / ${CHAR_LIMIT}`; charCounter.classList.remove('near-limit','at-limit'); }
+      setTimeout(() => formSuccess.classList.add('hidden'), 6000);
+    }, 1200);
   });
 }
 
-function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-function shakeForm() {
-  contactForm.style.animation = 'shake 0.4s ease';
-  setTimeout(() => { contactForm.style.animation = ''; }, 400);
-}
-
-function highlightField(field) {
-  field.style.borderColor = '#f87171';
-  field.focus();
-  setTimeout(() => { field.style.borderColor = ''; }, 2000);
-}
-
-// Add shake keyframe dynamically
-const shakeStyle = document.createElement('style');
-shakeStyle.textContent = `
-  @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    20% { transform: translateX(-8px); }
-    40% { transform: translateX(8px); }
-    60% { transform: translateX(-5px); }
-    80% { transform: translateX(5px); }
-  }
-`;
-document.head.appendChild(shakeStyle);
-
-// ─── INPUT FOCUS FLOATING LABEL EFFECT ──────
+// ─── INPUT FOCUS EFFECT ──────────────────────
 document.querySelectorAll('.input-wrapper input, .input-wrapper textarea').forEach(input => {
-  input.addEventListener('focus', () => {
-    input.parentElement.classList.add('focused');
-  });
-  input.addEventListener('blur', () => {
-    input.parentElement.classList.remove('focused');
-  });
+  input.addEventListener('focus', () => input.parentElement.classList.add('focused'));
+  input.addEventListener('blur',  () => input.parentElement.classList.remove('focused'));
 });
 
-// ─── DOWNLOAD CV BUTTON (Placeholder) ───────
+// ─── DOWNLOAD CV BUTTON (Coming Soon) ────────
 const downloadCvBtn = document.getElementById('download-cv');
 if (downloadCvBtn) {
   downloadCvBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    showToast('CV download will be available soon!', 'info');
+    // Pulse the button briefly
+    downloadCvBtn.style.transform = 'scale(0.96)';
+    setTimeout(() => { downloadCvBtn.style.transform = ''; }, 200);
+    showToast('📄 CV coming soon! Connect on LinkedIn in the meantime.', 'info');
   });
 }
 
 // ─── TOAST NOTIFICATION ─────────────────────
 function showToast(message, type = 'info') {
-  const existing = document.querySelector('.toast');
-  if (existing) existing.remove();
+  const existing = document.querySelector('.toast-notification');
+  if (existing) {
+    existing.style.animation = 'toastOut 0.2s ease forwards';
+    setTimeout(() => existing.remove(), 200);
+  }
 
   const toast = document.createElement('div');
-  toast.className = 'toast';
-  const iconMap = { info: 'fas fa-info-circle', success: 'fas fa-check-circle', error: 'fas fa-times-circle' };
-  toast.innerHTML = `<i class="${iconMap[type] || iconMap.info}"></i><span>${message}</span>`;
+  toast.className = 'toast-notification';
 
-  const toastStyle = `
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    background: rgba(15, 20, 40, 0.95);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(124, 58, 237, 0.4);
-    border-radius: 12px;
-    padding: 1rem 1.4rem;
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    color: #e2e8f0;
-    font-size: 0.9rem;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    z-index: 9999;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 20px rgba(124,58,237,0.2);
-    animation: toastIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-  `;
-  toast.style.cssText = toastStyle;
-  toast.querySelector('i').style.color = '#a855f7';
+  const colors = {
+    info:    { border: 'rgba(124, 58, 237, 0.5)', icon: '#a855f7', bg: 'rgba(124,58,237,0.08)' },
+    success: { border: 'rgba(34, 197, 94, 0.5)',  icon: '#22c55e', bg: 'rgba(34,197,94,0.08)' },
+    error:   { border: 'rgba(239, 68, 68, 0.5)',  icon: '#ef4444', bg: 'rgba(239,68,68,0.08)' },
+  };
+  const c = colors[type] || colors.info;
 
-  const toastAnim = document.createElement('style');
-  toastAnim.textContent = `
-    @keyframes toastIn { from { opacity: 0; transform: translateY(20px) scale(0.9); } to { opacity: 1; transform: translateY(0) scale(1); } }
-    @keyframes toastOut { from { opacity: 1; transform: translateY(0) scale(1); } to { opacity: 0; transform: translateY(20px) scale(0.9); } }
+  toast.innerHTML = `
+    <div style="
+      width:36px; height:36px; border-radius:50%;
+      background:${c.bg}; border:1px solid ${c.border};
+      display:flex; align-items:center; justify-content:center;
+      flex-shrink:0;
+    ">
+      <i class="fas fa-clock" style="color:${c.icon}; font-size:0.9rem;"></i>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:2px;">
+      <span style="font-weight:600; font-size:0.85rem; color:#fff;">Coming Soon</span>
+      <span style="font-size:0.8rem; color:#94a3b8; line-height:1.4;">${message}</span>
+    </div>
+    <button onclick="this.parentElement.style.animation='toastOut 0.3s ease forwards'; setTimeout(()=>this.parentElement.remove(),300);"
+      style="margin-left:auto; background:none; border:none; color:#64748b; cursor:pointer; font-size:1rem; padding:2px 4px; line-height:1;">
+      &times;
+    </button>
   `;
-  document.head.appendChild(toastAnim);
+
+  Object.assign(toast.style, {
+    position: 'fixed',
+    bottom: '2rem',
+    right: '2rem',
+    maxWidth: '340px',
+    background: 'rgba(9, 13, 31, 0.96)',
+    backdropFilter: 'blur(24px)',
+    webkitBackdropFilter: 'blur(24px)',
+    border: `1px solid ${c.border}`,
+    borderRadius: '14px',
+    padding: '0.9rem 1.1rem',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.85rem',
+    color: '#e2e8f0',
+    fontFamily: "'Poppins', sans-serif",
+    zIndex: '9999',
+    boxShadow: `0 12px 40px rgba(0,0,0,0.6), 0 0 24px ${c.border}`,
+    animation: 'toastIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both',
+  });
+
+  if (!document.getElementById('toast-keyframes')) {
+    const style = document.createElement('style');
+    style.id = 'toast-keyframes';
+    style.textContent = `
+      @keyframes toastIn  { from { opacity:0; transform:translateY(24px) scale(0.88); } to { opacity:1; transform:translateY(0) scale(1); } }
+      @keyframes toastOut { from { opacity:1; transform:translateY(0) scale(1); } to { opacity:0; transform:translateY(16px) scale(0.92); } }
+    `;
+    document.head.appendChild(style);
+  }
 
   document.body.appendChild(toast);
 
   setTimeout(() => {
+    if (!toast.isConnected) return;
     toast.style.animation = 'toastOut 0.35s ease forwards';
     setTimeout(() => toast.remove(), 350);
-  }, 3000);
+  }, 4500);
 }
 
 // ─── SMOOTH SCROLL FOR ALL ANCHOR LINKS ─────
